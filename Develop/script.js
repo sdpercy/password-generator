@@ -6,6 +6,11 @@ var uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
 var specialCharacters = "!@#$%^&*_+-=";
 
+//var allchoicesCase = [lowercaseLetters + uppercaseLetters + numbers + specialCharacters];
+//var nolowerCase = [uppercaseLetters + numbers + specialCharacters];
+//var noupperCase = [lowercaseLetters + numbers + specialCharacters];
+//var numbersCase = [nolowerCase + uppercaseLetters + specialCharacters];
+
 //Declare variables
 var passwordLength = "";
 var lowercaseChoice;
@@ -19,6 +24,15 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
+
+  if (lowercaseChoice === true && uppercaseChoice === true && numbersChoice === true && specialcharChoice === true) {
+    for (var i = 0; i < password.length;  i++) {
+      var password = generatePassword(); Math.floor(Math.random().toString(passwordLength))
+    }
+  }
+   {
+    
+  }
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -51,6 +65,10 @@ generateBtn.onclick = function() {
       var numbersChoice = confirm("Would you like your password to include numbers?");
       var specialcharChoice = confirm("Would you like your password to include special characters?");
     }
+
+
+    //call writePassword function to generate password and display on screen
+    writePassword();
 }
 
 
