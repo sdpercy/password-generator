@@ -3,8 +3,8 @@
 //arrays of various password characters
 var lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
 var uppercaseLetters = 'ABCDEFGHIJKLMNOPQSTUVWXYZ';
-var numbers = '0123456789';
-var specialCharacters = '!@#$%^&*_+-=';
+var numbers = '1234567890';
+var specialCharacters = '!@#$%^&*_+-=~*(){}[]|\/:;"<>?';
 
 
 
@@ -60,18 +60,40 @@ generateBtn.onclick = function()
       numbersChoice = confirm("Would you like your password to include numbers?");
       specialcharChoice = confirm("Would you like your password to include special characters?");
     }
-    //If all options selected password
+    //Different choice options from user input
+    //If all options selected password - works
     if (lowercaseChoice && uppercaseChoice && numbersChoice && specialcharChoice){
       userChoice = specialCharacters.concat(lowercaseLetters, uppercaseLetters, numbers);
     }
+    //No special characters - works
     else if (lowercaseChoice && uppercaseChoice && numbersChoice){
       userChoice = lowercaseLetters.concat(uppercaseLetters, numbers);
-
     }
-    else if (lowercaseChoice && numbers && specialcharChoice){
+    //No uppercase characters - works
+    else if (lowercaseChoice && numbersChoice && specialcharChoice){
       userChoice = lowercaseLetters.concat(numbers, specialCharacters);
     }
-
+    //No numbers characters - Does not work
+    else if (lowercaseChoice && uppercaseChoice && specialcharChoice){
+      userChoice = lowercaseLetters.concat(uppercaseLetters, specialcharCharacters);
+    }
+    //Only lowercase letters - works
+    else if (lowercaseChoice){
+      userChoice = lowercaseLetters;
+    }
+    //Only uppercase Letters - works
+    else if (uppercaseLetters){
+      userChoice = uppercaseLetters;
+    }
+    //Only special characters
+    else if (specialcharChoice){
+      userChoice = specialcharCharacters;
+    }
+    //Only numbers
+    else if (numbersChoice){
+      userChoice = numbers;
+    }
+    
   //call writePassword function to generate password and display on screen
   
   writePassword();
