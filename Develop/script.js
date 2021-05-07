@@ -62,8 +62,8 @@ generateBtn.onclick = function()
     //Different choice options from user input
     //If all options selected password - works
     if (lowercaseChoice && uppercaseChoice && numbersChoice && specialcharChoice){
-      userChoice = specialCharacters.concat(lowercaseLetters, uppercaseLetters, numbers);
-    }
+      userChoice = lowercaseLetters.concat(uppercaseLetters, numbers, specialCharacters);}
+  
     //No special characters - works
     else if (lowercaseChoice && uppercaseChoice && numbersChoice){
       userChoice = lowercaseLetters.concat(uppercaseLetters, numbers);
@@ -112,16 +112,16 @@ generateBtn.onclick = function()
     else if (uppercaseLetters){
       userChoice = uppercaseLetters;
     }
-    //Only special characters - not working
-    else if (specialcharChoice){
-      userChoice = specialCharacters;
-      console.log(userChoice);
-    }
     //Only numbers - not working
     else if (numbersChoice){
       userChoice = numbers;
-
     }
+    //Only special characters - not working
+    else if (specialcharChoice){
+      userChoice = specialCharacters;
+    }
+    
+    
     
   //call writePassword function to generate password and display on screen
   
