@@ -3,8 +3,8 @@
 //arrays of various password characters
 var lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
 var uppercaseLetters = 'ABCDEFGHIJKLMNOPQSTUVWXYZ';
-var numbers = "1234567890";
-var specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var numbers = '0123456789';
+var specialCharacters = "!#$%&'()*+,-.:;<=>?@[]^_`{|}~";
 
 
 
@@ -26,8 +26,8 @@ function writePassword(){
   var password ='';
     for (var i = 0; i < passwordLength; i++){
       var generatePassword = Math.floor(Math.random() * userChoice.length + 1);
-    //password += userChoice[generatePassword, generatePassword + 1];
-    password += userChoice.charAt(generatePassword)
+    
+    password += userChoice.charAt(generatePassword);
     passwordText.value = password;
   }
 }
@@ -43,7 +43,6 @@ generateBtn.onclick = function()
       window.alert("Invalid choice.  Please choose a password length between 8 and 128 characters")
       passwordLength = parseInt(prompt("Please choose a password length between 8 and 128 characters in length"))
     } 
-    
     lowercaseChoice = confirm("Would you like your password to have lowercase letters?");
     //Would you like to include uppercase letters?
     uppercaseChoice = confirm("Would you like your password to have uppercase letters?");
@@ -86,18 +85,18 @@ generateBtn.onclick = function()
       userChoice = lowercaseLetters.concat(uppercaseLetters);
     }
     //only lowercase letters and numbers - works
-    else if (lowercaseChoice && numbers){
+    else if (lowercaseChoice && numbersChoice){
       userChoice = lowercaseLetters.concat(numbers);
     }
-    //only lowercase letters and special characters-  not working
+    //only lowercase letters and special characters
     else if (lowercaseChoice && specialcharChoice){
       userChoice = lowercaseLetters.concat(specialCharacters);
     }
     //only uppercase letters and numbers - works
-    else if (uppercaseChoice && numbers){
+    else if (uppercaseChoice && numbersChoice){
       userChoice = uppercaseLetters.concat(numbers);
     }
-    //only uppercase letters and special characters -not working
+    //only uppercase letters and special characters
     else if (uppercaseChoice && specialcharChoice){
       userChoice = uppercaseLetters.concat(specialCharacters);
     }
@@ -116,10 +115,12 @@ generateBtn.onclick = function()
     //Only special characters - not working
     else if (specialcharChoice){
       userChoice = specialCharacters;
+      console.log(userChoice);
     }
     //Only numbers - not working
     else if (numbersChoice){
-      userChoice = numbers.toString;
+      userChoice = numbers;
+
     }
     
   //call writePassword function to generate password and display on screen
