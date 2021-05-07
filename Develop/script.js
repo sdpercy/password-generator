@@ -3,8 +3,8 @@
 //arrays of various password characters
 var lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
 var uppercaseLetters = 'ABCDEFGHIJKLMNOPQSTUVWXYZ';
-var numbers = '1234567890';
-var specialCharacters = '!@#$%^&*_+-=~*(){}[]|\/:;"<>?';
+var numbers = "1234567890";
+var specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
 
 
@@ -26,7 +26,7 @@ function writePassword(){
   var password ='';
     for (var i = 0; i < passwordLength; i++){
       var generatePassword = Math.floor(Math.random() * userChoice.length + 1);
-    
+    //password += userChoice[generatePassword, generatePassword + 1];
     password += userChoice.charAt(generatePassword)
     passwordText.value = password;
   }
@@ -73,9 +73,37 @@ generateBtn.onclick = function()
     else if (lowercaseChoice && numbersChoice && specialcharChoice){
       userChoice = lowercaseLetters.concat(numbers, specialCharacters);
     }
-    //No numbers characters - Does not work
+    //No numbers - works
     else if (lowercaseChoice && uppercaseChoice && specialcharChoice){
-      userChoice = lowercaseLetters.concat(uppercaseLetters, specialcharCharacters);
+      userChoice = lowercaseLetters.concat(uppercaseLetters, specialCharacters);
+    }
+    //No lowercase - works
+    else if (uppercaseChoice && numbersChoice && specialcharChoice){
+      userChoice = uppercaseLetters.concat(numbers, specialCharacters);
+    }
+    //only lowcase and uppercase letters - works
+    else if (lowercaseChoice && uppercaseChoice){
+      userChoice = lowercaseLetters.concat(uppercaseLetters);
+    }
+    //only lowercase letters and numbers - works
+    else if (lowercaseChoice && numbers){
+      userChoice = lowercaseLetters.concat(numbers);
+    }
+    //only lowercase letters and special characters-  not working
+    else if (lowercaseChoice && specialcharChoice){
+      userChoice = lowercaseLetters.concat(specialCharacters);
+    }
+    //only uppercase letters and numbers - works
+    else if (uppercaseChoice && numbers){
+      userChoice = uppercaseLetters.concat(numbers);
+    }
+    //only uppercase letters and special characters -not working
+    else if (uppercaseChoice && specialcharChoice){
+      userChoice = uppercaseLetters.concat(specialCharacters);
+    }
+    //only numbers and special characters - works
+    else if (numbersChoice && specialcharChoice){
+      userChoice = numbers.concat(specialCharacters);
     }
     //Only lowercase letters - works
     else if (lowercaseChoice){
@@ -85,19 +113,17 @@ generateBtn.onclick = function()
     else if (uppercaseLetters){
       userChoice = uppercaseLetters;
     }
-    //Only special characters
+    //Only special characters - not working
     else if (specialcharChoice){
-      userChoice = specialcharCharacters;
+      userChoice = specialCharacters;
     }
-    //Only numbers
+    //Only numbers - not working
     else if (numbersChoice){
-      userChoice = numbers;
+      userChoice = numbers.toString;
     }
     
   //call writePassword function to generate password and display on screen
   
   writePassword();
-
-
 }
 
