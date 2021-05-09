@@ -23,34 +23,38 @@ var generateBtn = document.querySelector("#generate");
 function writePassword(){
  
   var passwordText = document.querySelector("#password");
-  var password ='';
+  var password = '';
     for (var i = 0; i < passwordLength; i++){
       var generatePassword = Math.floor(Math.random() * userChoice.length + 1);
-    
-    password += userChoice.charAt(generatePassword);
-    passwordText.value = password;
-  }
+
+      password += userChoice.charAt(generatePassword);
+      passwordText.value = password;
+      delete userChoice.value;
+    }
 }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 //On click of generate button present user with series of questions to generate
-generateBtn.onclick = function() 
+  generateBtn.onclick = function()
 {
+    
     //Please choose password length between 8 - 128 characters?
-    passwordLength = parseInt(prompt("Please choose a password length between 8 and 128 characters in length"))
+    passwordLength = parseInt(prompt("Please choose a password length between 8 and 128 characters in length"));
     while (passwordLength < 8 || passwordLength > 128) {
       // If lower than 8 characters or greater than 128 - return message "please choose a password length between 8 and 128 characters"
-      window.alert("Invalid choice.  Please choose a password length between 8 and 128 characters")
-      passwordLength = parseInt(prompt("Please choose a password length between 8 and 128 characters in length"))
-    } 
+      window.alert("Invalid choice.  Please choose a password length between 8 and 128 characters");
+      passwordLength = parseInt(prompt("Please choose a password length between 8 and 128 characters in length"));
+    }
+    
+    //Would you like to include lowercase letters?
     lowercaseChoice = confirm("Would you like your password to have lowercase letters?");
     //Would you like to include uppercase letters?
     uppercaseChoice = confirm("Would you like your password to have uppercase letters?");
     // Do you want to include numbers?
-    numbersChoice = confirm("Would you like your password to include numbers?");  
+    numbersChoice = confirm("Would you like your password to include numbers?");
     //Would you like to include special characters?
     specialcharChoice = confirm("Would you like your password to include special characters?");
-
+  
     //If answer to prompt questions are all no - return message "please choose at least one character type to generate password"
     while (!lowercaseChoice && !uppercaseChoice && !numbersChoice && !specialcharChoice){
       window.alert("Please choose at least one character type to generate password!");
@@ -59,28 +63,29 @@ generateBtn.onclick = function()
       numbersChoice = confirm("Would you like your password to include numbers?");
       specialcharChoice = confirm("Would you like your password to include special characters?");
     }
+
     //Different choice options from user input
-    //If all options selected password - works
+    //If all options selected password 
     if (lowercaseChoice && uppercaseChoice && numbersChoice && specialcharChoice){
-      userChoice = lowercaseLetters.concat(uppercaseLetters, numbers, specialCharacters);}
-  
-    //No special characters - works
+      userChoice = lowercaseLetters.concat(uppercaseLetters, numbers, specialCharacters);
+    }
+    //No special characters 
     else if (lowercaseChoice && uppercaseChoice && numbersChoice){
       userChoice = lowercaseLetters.concat(uppercaseLetters, numbers);
     }
-    //No uppercase characters - works
+    //No uppercase characters
     else if (lowercaseChoice && numbersChoice && specialcharChoice){
       userChoice = lowercaseLetters.concat(numbers, specialCharacters);
     }
-    //No numbers - works
+    //No numbers 
     else if (lowercaseChoice && uppercaseChoice && specialcharChoice){
       userChoice = lowercaseLetters.concat(uppercaseLetters, specialCharacters);
     }
-    //No lowercase - works
+    //No lowercase 
     else if (uppercaseChoice && numbersChoice && specialcharChoice){
       userChoice = uppercaseLetters.concat(numbers, specialCharacters);
     }
-    //only lowcase and uppercase letters - works
+    //only lowcase and uppercase letters 
     else if (lowercaseChoice && uppercaseChoice){
       userChoice = lowercaseLetters.concat(uppercaseLetters);
     }
@@ -92,7 +97,7 @@ generateBtn.onclick = function()
     else if (lowercaseChoice && specialcharChoice){
       userChoice = lowercaseLetters.concat(specialCharacters);
     }
-    //only uppercase letters and numbers - works
+    //only uppercase letters and numbers
     else if (uppercaseChoice && numbersChoice){
       userChoice = uppercaseLetters.concat(numbers);
     }
@@ -100,28 +105,27 @@ generateBtn.onclick = function()
     else if (uppercaseChoice && specialcharChoice){
       userChoice = uppercaseLetters.concat(specialCharacters);
     }
-    //only numbers and special characters - works
+    //only numbers and special characters
     else if (numbersChoice && specialcharChoice){
       userChoice = numbers.concat(specialCharacters);
     }
-    //Only lowercase letters - works
+    //Only lowercase letters
+    
     else if (lowercaseChoice){
       userChoice = lowercaseLetters;
     }
-    //Only uppercase Letters - works
+    //Only uppercase Letters
     else if (uppercaseLetters){
       userChoice = uppercaseLetters;
     }
-    //Only numbers - not working
+    //Only numbers 
     else if (numbersChoice){
       userChoice = numbers;
     }
-    //Only special characters - not working
+    //Only special characters 
     else if (specialcharChoice){
       userChoice = specialCharacters;
     }
-    
-    
     
   //call writePassword function to generate password and display on screen
   

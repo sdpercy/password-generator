@@ -1,4 +1,4 @@
-# Password Generator Starter Code
+# Scott's Password Generator
 
 ## ------Acceptance Criteria--------
 
@@ -17,3 +17,14 @@ WHEN all prompts are answered
 THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
+
+## -----How to -----
+
+1. Click "Generate Password"
+2. Select the amount of characters in the password.  Password has to be between 8 characters and 128 characters long.
+3. Select if you want to include lowercase letters
+4. Select if you want to include uppercase letters
+5. Select if you want to include numeric characters
+6. Select if you want to include special characters
+
+After all the prompts the password is generated and displayed in the text box "Your Secure Password"
