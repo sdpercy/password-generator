@@ -22,6 +22,9 @@ THEN the password is either displayed in an alert or written to the page
 
 https://sdpercy.github.io/password-generator/
 
+![image](https://user-images.githubusercontent.com/78440638/117581492-96d60e00-b0d7-11eb-9f61-7860549eea39.png)
+
+
 ## How to 
 
 1. Click "Generate Password"
