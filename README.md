@@ -1,6 +1,6 @@
 # Scott's Password Generator
 
-## ------Acceptance Criteria--------
+## Acceptance Criteria
 
 GIVEN I need a new, secure password
 WHEN I click the button to generate a password
@@ -18,7 +18,11 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 
-## -----How to -----
+## Published Application URL:
+
+https://sdpercy.github.io/password-generator/
+
+## How to 
 
 1. Click "Generate Password"
 2. Select the amount of characters in the password.  Password has to be between 8 characters and 128 characters long.
